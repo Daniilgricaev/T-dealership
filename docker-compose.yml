@@ -1,5 +1,17 @@
 version: '3.8'
 services:
+  postgres:
+    image: postgres:15
+    container_name: T-dealership
+    #network_mode: host
+    ports:
+      - "5439:5432"
+    environment:
+      POSTGRES_DB: t-bank
+      POSTGRES_USER: dealer
+      POSTGRES_PASSWORD: 123456
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
   kafka:
     image: apache/kafka:latest
     container_name: shop-kafka
@@ -11,3 +23,5 @@ services:
       KAFKA_ADVERTISED_LISTENERS: 'PLAINTEXT://127.0.0.1:9092'
       KAFKA_CONTROLLER_QUORUM_VOTERS: '1@127.0.0.1:9093'
       KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+volumes:
+  postgres_data:

@@ -1,10 +1,13 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-.kotlin
+.class
+.log
 
-### IntelliJ IDEA ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.next
+pom.xml.releaseBackup~
+release.properties
+
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
@@ -12,8 +15,23 @@ target/
 *.iws
 *.iml
 *.ipr
+#docker
+.env
+!.env.example
+docker-compose.override.yml
+#
 
-### Eclipse ###
+#postgreSQL
+postgres_data/
+pgdata/
+*.sql.gz
+*.backup
+#
+#kafka
+kafka_data/
+zookeeper_data/
+kafka-logs/
+#
 .apt_generated
 .classpath
 .factorypath
@@ -22,7 +40,7 @@ target/
 .springBeans
 .sts4-cache
 
-### NetBeans ###
+
 /nbproject/private/
 /nbbuild/
 /dist/
@@ -32,8 +50,8 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
+
 .vscode/
 
-### Mac OS ###
+
 .DS_Store
