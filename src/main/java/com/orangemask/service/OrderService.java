@@ -3,9 +3,11 @@ package com.orangemask.service;
 import com.orangemask.dto.OrderDTO;
 import com.orangemask.entity.CarOrderEntity;
 import com.orangemask.repository.CarOrderRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Slf4j
 @Service
 public class OrderService {
     private static final double INTEREST_RATE =  1.2;
@@ -17,11 +19,11 @@ public class OrderService {
     @Transactional
     public void processOrder(OrderDTO orderDTO){
         if(orderDTO.getDownPayment() > orderDTO.getCarPrice()){
-            System.out.println("Reject");
+            log.info("Reject : your down-payment higher than the cost of the car");
             return;
         }
         if(orderDTO.getDownPayment() == orderDTO.getCarPrice()){
-            System.out.println("With out credit");
+            log.info("With out credit");
             CarOrderEntity carOrderEntity = new CarOrderEntity(
                     orderDTO.getCarName(),
                     orderDTO.getCarPrice(),
